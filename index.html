@@ -1,348 +1,466 @@
 <!doctype html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Catppuccin Start Page</title>
-        <style>
-            :root {
-                --rosewater: #f5e0dc;
-                --flamingo: #f2cdcd;
-                --pink: #f5c2e7;
-                --mauve: #cba6f7;
-                --red: #f38ba8;
-                --maroon: #eba0ac;
-                --peach: #fab387;
-                --yellow: #f9e2af;
-                --green: #a6e3a1;
-                --teal: #94e2d5;
-                --sky: #89dceb;
-                --sapphire: #74c7ec;
-                --blue: #89b4fa;
-                --lavender: #b4befe;
-                --text: #cdd6f4;
-                --subtext1: #bac2de;
-                --subtext0: #a6adc8;
-                --overlay2: #9399b2;
-                --overlay1: #7f849c;
-                --overlay0: #6c7086;
-                --surface2: #585b70;
-                --surface1: #45475a;
-                --surface0: #313244;
-                --base: #1e1e2e;
-                --mantle: #181825;
-                --crust: #11111b;
-            }
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catppuccin Start</title>
+    <style>
+        :root {
+            --rosewater: #f5e0dc;
+            --flamingo: #f2cdcd;
+            --pink: #f5c2e7;
+            --mauve: #cba6f7;
+            --red: #f38ba8;
+            --maroon: #eba0ac;
+            --peach: #fab387;
+            --yellow: #f9e2af;
+            --green: #a6e3a1;
+            --teal: #94e2d5;
+            --sky: #89dceb;
+            --sapphire: #74c7ec;
+            --blue: #89b4fa;
+            --lavender: #b4befe;
+            --text: #cdd6f4;
+            --subtext1: #bac2de;
+            --subtext0: #a6adc8;
+            --overlay2: #9399b2;
+            --overlay1: #7f849c;
+            --overlay0: #6c7086;
+            --surface2: #585b70;
+            --surface1: #45475a;
+            --surface0: #313244;
+            --base: #1e1e2e;
+            --mantle: #181825;
+            --crust: #11111b;
+        }
 
-            body {
-                font-family: "JetBrainsMono Nerd Font";
-                background-color: var(--base);
-                color: var(--text);
-                margin: 0;
-                padding: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                height: 100vh;
-                overflow: hidden;
-                transition: all 0.3s ease;
-            }
+        body {
+            font-family: "JetBrainsMono NF", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--base);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
 
-            .container {
-                text-align: center;
-                width: 90%;
-                max-width: 800px;
-            }
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+        }
 
+        .time {
+            font-size: 6rem;
+            font-weight: 300;
+            margin: 0;
+            color: var(--lavender);
+            text-shadow: 0 0 10px rgba(180, 190, 254, 0.3);
+        }
+
+        .date {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--subtext1);
+        }
+
+        .search {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .search input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 30px;
+            border: none;
+            background-color: var(--surface0);
+            color: var(--text);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .search input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--mauve);
+            background-color: var(--surface1);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quick-link {
+            background-color: var(--surface0);
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .quick-link:hover {
+            background-color: var(--surface1);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .quick-link i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--mauve);
+        }
+
+        .widgets {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        .weather-widget {
+            background-color: var(--surface0);
+            border-radius: 15px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .weather-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: var(--yellow);
+        }
+
+        .weather-info {
+            text-align: left;
+        }
+
+        .weather-temp {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--peach);
+        }
+
+        .weather-desc {
+            font-size: 0.9rem;
+            color: var(--subtext1);
+        }
+
+        .weather-location {
+            font-size: 0.8rem;
+            color: var(--subtext0);
+            margin-top: 3px;
+        }
+
+        .weather-more {
+            font-size: 0.7rem;
+            color: var(--overlay0);
+            margin-top: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .quote-widget {
+            background-color: var(--surface0);
+            border-radius: 15px;
+            padding: 15px 20px;
+            font-style: italic;
+            color: var(--subtext1);
+            max-width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-author {
+            margin-top: 5px;
+            text-align: right;
+            color: var(--subtext0);
+            font-style: normal;
+            font-size: 0.8rem;
+        }
+
+        .greeting {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--blue);
+        }
+
+        @media (max-width: 768px) {
             .time {
-                font-size: 6rem;
-                font-weight: 300;
-                margin: 0;
-                color: var(--lavender);
-                text-shadow: 0 0 10px rgba(180, 190, 254, 0.3);
+                font-size: 4rem;
             }
 
             .date {
-                font-size: 1.5rem;
-                margin-bottom: 2rem;
-                color: var(--subtext1);
-            }
-
-            .search {
-                width: 100%;
-                max-width: 600px;
-                margin: 0 auto 2rem;
-            }
-
-            .search input {
-                width: 100%;
-                padding: 15px 20px;
-                border-radius: 30px;
-                border: none;
-                background-color: var(--surface0);
-                color: var(--text);
-                font-size: 1.1rem;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s ease;
-            }
-
-            .search input:focus {
-                outline: none;
-                box-shadow: 0 0 0 2px var(--mauve);
-                background-color: var(--surface1);
-            }
-
-            .quick-links {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-                gap: 15px;
-                width: 100%;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-
-            .quick-link {
-                background-color: var(--surface0);
-                border-radius: 10px;
-                padding: 15px;
-                transition: all 0.3s ease;
-                cursor: pointer;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-decoration: none;
-                color: var(--text);
-            }
-
-            .quick-link:hover {
-                background-color: var(--surface1);
-                transform: translateY(-3px);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
-
-            .quick-link i {
-                font-size: 1.5rem;
-                margin-bottom: 8px;
-                color: var(--mauve);
+                font-size: 1.2rem;
             }
 
             .widgets {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                max-width: 600px;
-                margin: 2rem auto 0;
-            }
-
-            .weather-widget {
-                background-color: var(--surface0);
-                border-radius: 15px;
-                padding: 15px 20px;
-                display: flex;
+                flex-direction: column;
                 align-items: center;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                gap: 15px;
             }
 
-            .weather-icon {
-                font-size: 2rem;
-                margin-right: 15px;
-                color: var(--yellow);
+            .quick-links {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="greeting" id="greeting">Greetings</h1>
+        <h1 class="time" id="time">Time</h1>
+        <p class="date" id="date">Date</p>
 
-            .weather-info {
-                text-align: left;
-            }
-
-            .weather-temp {
-                font-size: 1.5rem;
-                font-weight: bold;
-                color: var(--peach);
-            }
-
-            .weather-desc {
-                font-size: 0.9rem;
-                color: var(--subtext1);
-            }
-
-            .quote-widget {
-                background-color: var(--surface0);
-                border-radius: 15px;
-                padding: 15px 20px;
-                font-style: italic;
-                color: var(--subtext1);
-                max-width: 300px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            .quote-author {
-                margin-top: 5px;
-                text-align: right;
-                color: var(--subtext0);
-                font-style: normal;
-                font-size: 0.8rem;
-            }
-
-            .greeting {
-                font-size: 1.8rem;
-                margin-bottom: 1rem;
-                color: var(--blue);
-            }
-
-            @media (max-width: 768px) {
-                .time {
-                    font-size: 4rem;
-                }
-
-                .date {
-                    font-size: 1.2rem;
-                }
-
-                .widgets {
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 15px;
-                }
-
-                .quick-links {
-                    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-                }
-            }
-        </style>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        <div class="search">
+            <label for="search-input"></label><input
+                type="text"
+                placeholder="Search"
+                id="search-input"
         />
-    </head>
-    <body>
-        <div class="container">
-            <h1 class="greeting" id="greeting">Доброе утро</h1>
-            <h1 class="time" id="time">00:00</h1>
-            <p class="date" id="date">Понедельник, 1 января 2023</p>
-
-            <div class="search">
-                <input
-                    type="text"
-                    placeholder="Поиск в Google или введите URL"
-                    id="search-input"
-                />
-            </div>
-
-            <div class="quick-links">
-                <a href="https://github.com" class="quick-link">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://youtube.com" class="quick-link">
-                    <i class="fab fa-youtube"></i>
-                    <span>YouTube</span>
-                </a>
-                <a href="https://reddit.com" class="quick-link">
-                    <i class="fab fa-reddit"></i>
-                    <span>Reddit</span>
-                </a>
-                <a href="https://twitter.com" class="quick-link">
-                    <i class="fab fa-twitter"></i>
-                    <span>Twitter</span>
-                </a>
-                <a href="https://mail.google.com" class="quick-link">
-                    <i class="fas fa-envelope"></i>
-                    <span>Gmail</span>
-                </a>
-                <a href="https://drive.google.com" class="quick-link">
-                    <i class="fab fa-google-drive"></i>
-                    <span>Drive</span>
-                </a>
-            </div>
-
-            <div class="widgets">
-                <div class="weather-widget">
-                    <div class="weather-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="weather-info">
-                        <div class="weather-temp">24°C</div>
-                        <div class="weather-desc">Солнечно</div>
-                    </div>
-                </div>
-
-                <div class="quote-widget">
-                    <div class="quote-text">
-                        "Единственный способ сделать великую работу — любить то,
-                        что ты делаешь."
-                    </div>
-                    <div class="quote-author">— Стив Джобс</div>
-                </div>
-            </div>
         </div>
 
-        <script>
-            // Обновление времени и даты
-            function updateTime() {
-                const now = new Date();
-                const timeElement = document.getElementById("time");
-                const dateElement = document.getElementById("date");
-                const greetingElement = document.getElementById("greeting");
+        <div class="quick-links">
+            <a href="https://icloud.com" class="quick-link">
+                <i class="fab fa-apple"></i>
+                <span>iCloud</span>
+            </a>
+            <a href="https://mail.google.com/mail/u/0/#inbox" class="quick-link">
+                <i class="fas fa-envelope"></i>
+                <span>Gmail 1</span>
+            </a>
+            <a href="https://mail.google.com/mail/u/1/#inbox" class="quick-link">
+                <i class="fas fa-envelope"></i>
+                <span>Gmail 2</span>
+            </a>
+            <a href="https://github.com" class="quick-link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="https://reddit.com" class="quick-link">
+                <i class="fab fa-reddit"></i>
+                <span>Reddit</span>
+            </a>
+            <a href="https://youtube.com" class="quick-link">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube</span>
+            </a>
+            <a href="https://chat.openai.com" class="quick-link">
+                <i class="fas fa-comment-dots"></i>
+                <span>ChatGPT</span>
+            </a>
+            <a href="https://chat.deepseek.com/" class="quick-link">
+                <i class="fas fa-search"></i>
+                <span>DeepSeek</span>
+            </a>
+        </div>
 
-                // Форматирование времени
-                const hours = now.getHours().toString().padStart(2, "0");
-                const minutes = now.getMinutes().toString().padStart(2, "0");
-                timeElement.textContent = `${hours}:${minutes}`;
+        <div class="widgets">
+            <div class="weather-widget" id="weather-widget">
+                <div class="weather-icon">
+                    <i class="fas fa-cloud-sun"></i>
+                </div>
+                <div class="weather-info">
+                    <div class="weather-temp">--°C</div>
+                    <div class="weather-desc">
+                        Detecting location...
+                    </div>
+                    <div class="weather-location"></div>
+                    <a href="#" class="weather-more" id="weather-link"
+                    >More details</a
+                    >
+                </div>
+            </div>
 
-                // Форматирование даты
-                const options = {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                };
-                dateElement.textContent = now.toLocaleDateString(
-                    "ru-RU",
-                    options,
-                );
+            <div class="quote-widget">
+                <div class="quote-text">
+                    "The only way to do great work is to love what you do."
+                </div>
+                <div class="quote-author">— Steve Jobs</div>
+            </div>
+        </div>
+    </div>
 
-                // Приветствие в зависимости от времени суток
-                const hour = now.getHours();
-                if (hour < 6) greetingElement.textContent = "Доброй ночи";
-                else if (hour < 12) greetingElement.textContent = "Доброе утро";
-                else if (hour < 18) greetingElement.textContent = "Добрый день";
-                else greetingElement.textContent = "Добрый вечер";
-            }
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeElement = document.getElementById("time");
+            const dateElement = document.getElementById("date");
+            const greetingElement = document.getElementById("greeting");
 
-            // Поиск
-            document
-                .getElementById("search-input")
-                .addEventListener("keypress", function (e) {
-                    if (e.key === "Enter") {
-                        const query = this.value.trim();
-                        if (query) {
-                            if (query.includes(".") && !query.includes(" ")) {
-                                // Если похоже на URL
-                                window.location.href = query.startsWith("http")
-                                    ? query
-                                    : `https://${query}`;
-                            } else {
-                                // Поиск в Google
-                                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-                            }
+            const hours = now.getHours().toString().padStart(2, "0");
+            const minutes = now.getMinutes().toString().padStart(2, "0");
+            timeElement.textContent = `${hours}:${minutes}`;
+
+            const options = {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            };
+            dateElement.textContent = now.toLocaleDateString(
+                "en-US",
+                options,
+            );
+
+            const hour = now.getHours();
+            if (hour < 6) greetingElement.textContent = "Good Night";
+            else if (hour < 12) greetingElement.textContent = "Good Morning";
+            else if (hour < 18) greetingElement.textContent = "Good Afternoon";
+            else greetingElement.textContent = "Good Evening";
+        }
+
+        document
+            .getElementById("search-input")
+            .addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    const query = this.value.trim();
+                    if (query) {
+                        if (query.includes(".") && !query.includes(" ")) {
+                            window.location.href = query.startsWith("http")
+                                ? query
+                                : `https://${query}`;
+                        } else {
+                            window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
                         }
                     }
+                }
+            });
+
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        async function updateWeather() {
+            const weatherWidget = document.getElementById("weather-widget");
+            const tempElement =
+                weatherWidget.querySelector(".weather-temp");
+            const descElement =
+                weatherWidget.querySelector(".weather-desc");
+            const iconElement =
+                weatherWidget.querySelector(".weather-icon i");
+            const locationElement =
+                weatherWidget.querySelector(".weather-location");
+            const weatherLink = document.getElementById("weather-link");
+
+            try {
+                const position = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(
+                        resolve,
+                        reject,
+                    );
                 });
 
-            // Обновляем время сразу и затем каждую минуту
-            updateTime();
-            setInterval(updateTime, 60000);
+                weatherLink.href = `https://weather.com/weather/today/l/${position.coords.latitude},${position.coords.longitude}`;
 
-            // Пример API для погоды (нужно заменить на реальный вызов API)
-            function updateWeather() {
-                // Здесь можно добавить вызов реального API погоды
-                // Например, используя OpenWeatherMap или другой сервис
+                const response = await fetch(
+                    `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&current_weather=true&windspeed_unit=ms&timezone=auto&lang=en`,
+                );
+
+                if (!response.ok) throw new Error("Weather request failed");
+
+                const data = await response.json();
+
+                tempElement.textContent = `${Math.round(data.current_weather.temperature)}°C`;
+
+                const weatherCode = data.current_weather.weathercode;
+                descElement.textContent = getSimpleWeatherDesc(weatherCode);
+
+                const locationResponse = await fetch(
+                    `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`,
+                );
+                const locationData = await locationResponse.json();
+                locationElement.textContent =
+                    locationData.address.city ||
+                    locationData.address.town ||
+                    locationData.address.village ||
+                    "Your location";
+
+                iconElement.className = `fas fa-${getWeatherIcon(weatherCode)}`;
+                setTempColor(tempElement, data.current_weather.temperature);
+            } catch (error) {
+                console.error("Weather error:", error);
+                tempElement.textContent = "--°C";
+                descElement.textContent = "Failed to load weather";
+                iconElement.className = "fas fa-cloud-question";
+                locationElement.textContent = "Location unavailable";
+                weatherLink.href = "https://weather.com";
             }
+        }
 
-            // Можно добавить больше функций, например:
-            // - Получение случайных цитат
-            // - Изменение фона в зависимости от времени суток
-            // - Сохранение пользовательских быстрых ссылок
-        </script>
-    </body>
+        function getSimpleWeatherDesc(code) {
+            const descriptions = {
+                0: "Clear sky",
+                1: "Mainly clear",
+                2: "Partly cloudy",
+                3: "Overcast",
+                45: "Fog",
+                48: "Rime fog",
+                51: "Light drizzle",
+                53: "Moderate drizzle",
+                55: "Dense drizzle",
+                56: "Light freezing drizzle",
+                57: "Dense freezing drizzle",
+                61: "Slight rain",
+                63: "Moderate rain",
+                65: "Heavy rain",
+                66: "Light freezing rain",
+                67: "Heavy freezing rain",
+                71: "Slight snowfall",
+                73: "Moderate snowfall",
+                75: "Heavy snowfall",
+                77: "Snow grains",
+                80: "Slight rain showers",
+                81: "Moderate rain showers",
+                82: "Violent rain showers",
+                85: "Slight snow showers",
+                86: "Heavy snow showers",
+                95: "Thunderstorm",
+                96: "Thunderstorm with hail",
+                99: "Heavy thunderstorm with hail",
+            };
+            return descriptions[code] || "Mixed weather";
+        }
+
+        function getWeatherIcon(code) {
+            if (code >= 95) return "bolt";
+            if (code >= 80) return "cloud-showers-heavy";
+            if (code >= 70) return "snowflake";
+            if (code >= 60) return "cloud-rain";
+            if (code >= 50) return "cloud-meatball";
+            if (code >= 45) return "smog";
+            if (code >= 3) return "cloud";
+            if (code >= 1) return "cloud-sun";
+            return "sun";
+        }
+
+        function setTempColor(element, temp) {
+            if (temp < 0) element.style.color = "var(--blue)";
+            else if (temp < 10) element.style.color = "var(--sapphire)";
+            else if (temp < 20) element.style.color = "var(--teal)";
+            else if (temp < 30) element.style.color = "var(--peach)";
+            else element.style.color = "var(--red)";
+        }
+
+        updateWeather();
+    </script>
+</body>
 </html>
